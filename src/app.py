@@ -6,7 +6,7 @@ import logging
 from sklearn.exceptions import NotFittedError
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/predict": {"origins": "*"}})
 
 logging.basicConfig(level=logging.INFO)
 
