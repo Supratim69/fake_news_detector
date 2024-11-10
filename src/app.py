@@ -10,6 +10,7 @@ CORS(app, resources={r"/predict": {"origins": "http://localhost:5173"}})
 
 logging.basicConfig(level=logging.INFO)
 
+
 try:
     with open('../naive_bayes_model.pkl', 'rb') as f:
         model, vectorizer = pickle.load(f)
