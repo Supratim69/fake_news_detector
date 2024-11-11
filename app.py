@@ -12,12 +12,13 @@ logging.basicConfig(level=logging.INFO)
 
 
 try:
-    with open('../naive_bayes_model.pkl', 'rb') as f:
+    with open('naive_bayes_model.pkl', 'rb') as f:
         model, vectorizer = pickle.load(f)
 except (FileNotFoundError, pickle.UnpicklingError) as e:
     model = None
     vectorizer = None
     logging.error(f"Error loading model and vectorizer: {e}")
+
 
 # Define a helper function to validate input
 def validate_input(data):
@@ -33,6 +34,7 @@ def validate_input(data):
         return False, "Text field is required and should be a string"
 
     return True, None
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -74,4 +76,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0')
